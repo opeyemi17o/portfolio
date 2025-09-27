@@ -5,7 +5,7 @@ National Diploma
 - Electrical and Electronics Engineering	Sept 2017 - Jul 2020
 Lagos State Polytechnic., Lagos State
 
-### Work Experience
+## Work Experience
 Junior Data Analyst	Mar 2025 - Present
 **Mytech Enterprise Service**
 Responsibilities

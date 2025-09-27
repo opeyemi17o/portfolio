@@ -1,13 +1,13 @@
 # Data Scientist
 
-### Education
+# Education
 National Diploma 
 - Electrical and Electronics Engineering	Sept 2017 - Jul 2020
 Lagos State Polytechnic., Lagos State
 
-## Work Experience
-Junior Data Analyst	Mar 2025 - Present
-**Mytech Enterprise Service**
+# Work Experience
+##Junior Data Analyst	Mar 2025 - Present
+ #**Mytech Enterprise Service**
 Responsibilities
 ●	Compiled and structured sales and warranty claim data to track product performance and customer usage patterns..
 ●	Analyzed sales trends across multiple product lines to identify fast-moving items and underperforming categories.

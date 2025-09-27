@@ -7,7 +7,7 @@ Lagos State Polytechnic., Lagos State
 
 # Work Experience
  - Junior Data Analyst	Mar 2025 - Present
- - Mytech Enterprise Service**
+  - Mytech Enterprise Service**
     -Responsibilities
      - Compiled and structured sales and warranty claim data to track product performance and customer usage patterns..
   	  - Analyzed sales trends across multiple product lines to identify fast-moving items and underperforming categories.

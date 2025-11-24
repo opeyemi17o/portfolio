@@ -1,345 +1,597 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Opeyemi Olayiwola - Data Scientist Portfolio</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<style>
-		.uppercase {
-			text-transform: uppercase;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Ani - Data Scientist Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		.serif {
-			font-family: "Merriweather", Georgia, serif;
-		}
+        body {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            background: #935d8c;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 17pt;
+            font-weight: 300;
+            line-height: 1.65;
+        }
 
-		.custom-weight {
-			font-weight: 900;
-		}
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+            transition: border-bottom-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
 
-		.bold-weight {
-			font-weight: 600;
-		}
+        a:hover {
+            border-bottom-color: transparent;
+            color: #ffffff;
+        }
 
-		.light-weight {
-			font-weight: 300;
-		}
+        h1, h2, h3, h4 {
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.5;
+            margin: 0 0 1em 0;
+        }
 
-		/* Improved project card styling */
-		.project-card {
-			margin-bottom: 2em;
-			transition: transform 0.3s ease;
-		}
+        h1 {
+            font-size: 2.5em;
+            line-height: 1.2;
+            font-weight: 900;
+        }
 
-		.project-card:hover {
-			transform: translateY(-5px);
-		}
+        h2 {
+            font-size: 1.75em;
+            font-weight: 900;
+        }
 
-		.project-image {
-			width: 100%;
-			max-width: 300px;
-			height: 200px;
-			object-fit: cover;
-			border-radius: 8px;
-			margin-bottom: 1em;
-		}
+        /* Navigation */
+        #nav {
+            position: fixed;
+            top: 1em;
+            left: 1em;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.175);
+            border-radius: 0.35em;
+            padding: 0.5em 0.75em;
+        }
 
-		/* Improved list styling */
-		.clean-list {
-			list-style-type: none;
-			padding-left: 0;
-		}
+        #nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-		.clean-list li {
-			margin-bottom: 2.5em;
-			padding: 1.5em;
-			background: rgba(255, 255, 255, 0.05);
-			border-radius: 8px;
-			border-left: 4px solid #5e42a6;
-		}
+        #nav li {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+        }
 
-		.experience-title {
-			margin-bottom: 0.5em;
-			color: #ffffff;
-		}
+        #nav a {
+            display: block;
+            color: #ffffff;
+            border: 0;
+            text-decoration: none;
+            font-size: 0.8em;
+            font-weight: 600;
+            border-radius: 0.35em;
+            padding: 0.5em 1em;
+            transition: background-color 0.2s ease-in-out;
+        }
 
-		.experience-desc {
-			text-align: left;
-			line-height: 1.8;
-		}
+        #nav a.active,
+        #nav a:hover {
+            background-color: rgba(255, 255, 255, 0.35);
+        }
 
-		/* Contact section improvements */
-		.contact-info {
-			text-align: left;
-		}
+        /* Wrapper */
+        #wrapper {
+            width: 64em;
+            max-width: calc(100% - 4em);
+            margin: 0 auto;
+        }
 
-		.contact-info dt {
-			font-weight: 600;
-			margin-top: 1em;
-		}
+        /* Header */
+        #header {
+            padding: 8em 0 0.25em 0;
+            text-align: center;
+        }
 
-		/* Section spacing */
-		section.main {
-			padding: 4em 0;
-		}
+        #header .logo {
+            width: 5.5em;
+            height: 5.5em;
+            line-height: 5.5em;
+            border: solid 2px rgba(255, 255, 255, 0.125);
+            border-radius: 100%;
+            display: inline-block;
+            margin: 0 0 2em 0;
+            padding: 0;
+            position: relative;
+        }
 
-		/* Centered content for about section */
-		.about-content {
-			max-width: 900px;
-			margin: 0 auto;
-			text-align: left;
-		}
-	</style>
+        #header .logo svg,
+        #header .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+        }
+
+        #header h1 {
+            font-size: 3.25em;
+            margin: 0 0 0.55em 0;
+        }
+
+        #header p {
+            font-size: 1.35em;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Main */
+        #main {
+            background-color: #ffffff;
+            color: #636363;
+            border-radius: 0.25em;
+        }
+
+        #main > .main {
+            padding: 5em 5em 3em 5em;
+            border-top: solid 2px #eeeeee;
+        }
+
+        #main > .main:first-child {
+            border-top: 0;
+        }
+
+        #main > .main .spotlight {
+            display: flex;
+            align-items: center;
+            margin: 0 0 2em 0;
+        }
+
+        #main > .main .spotlight .content {
+            flex: 1 1 0%;
+            padding-right: 3em;
+        }
+
+        #main > .main .spotlight .image {
+            display: inline-block;
+            width: 28em;
+        }
+
+        #main > .main .spotlight .image img {
+            display: block;
+            width: 100%;
+            border-radius: 0.25em;
+        }
+
+        #main > .main.special {
+            text-align: center;
+        }
+
+        #main > .main h2 {
+            color: #636363;
+        }
+
+        #main > .main p {
+            margin: 0 0 2em 0;
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 3em 0 0 0;
+            width: calc(100% + 4em);
+            margin-left: -2em;
+        }
+
+        .features li {
+            flex-shrink: 1;
+            flex-grow: 0;
+            width: calc(33.33333% - 2em);
+            margin-left: 2em;
+            margin-top: 3em;
+            padding: 0;
+            text-align: center;
+            list-style: none;
+        }
+
+        .features li .image {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 1.5em;
+        }
+
+        .features li .image img {
+            width: 100%;
+            border-radius: 0.25em;
+        }
+
+        .features li h3 {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        .features li h3 a {
+            color: #636363;
+            border: 0;
+        }
+
+        .features li h3 a:hover {
+            color: #935d8c;
+        }
+
+        /* Statistics */
+        .statistics {
+            display: flex;
+            width: 100%;
+            margin: 3em 0 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .statistics li {
+            flex: 1;
+            padding: 1.5em;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .statistics li.style1 { background-color: #efa8b0; }
+        .statistics li.style2 { background-color: #c79cc8; }
+        .statistics li.style3 { background-color: #a89cc8; }
+        .statistics li.style4 { background-color: #9bb2e1; }
+        .statistics li.style5 { background-color: #8cc9f0; }
+
+        .statistics li strong {
+            display: block;
+            font-size: 2em;
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        /* Button */
+        .button {
+            appearance: none;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            background-color: transparent;
+            border-radius: 0.35em;
+            border: 0;
+            box-shadow: inset 0 0 0 2px #636363;
+            color: #636363 !important;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: 600;
+            height: 3.5em;
+            letter-spacing: 0.075em;
+            line-height: 3.5em;
+            padding: 0 2.25em;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            white-space: nowrap;
+            border-bottom: 0;
+        }
+
+        .button:hover {
+            background-color: rgba(99, 99, 99, 0.075);
+        }
+
+        .button.primary {
+            background-color: #935d8c;
+            box-shadow: none;
+            color: #ffffff !important;
+        }
+
+        .button.primary:hover {
+            background-color: #a06b97;
+        }
+
+        /* Footer */
+        #footer {
+            padding: 5em 5em 3em 5em;
+            background-color: #f8f8f8;
+            color: #636363;
+            border-radius: 0.25em;
+            margin-top: 2em;
+        }
+
+        #footer h2 {
+            color: #636363;
+            margin-bottom: 2em;
+            text-align: center;
+        }
+
+        #footer .alt {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #footer .alt dt {
+            display: block;
+            font-weight: 600;
+            margin: 0 0 0.5em 0;
+        }
+
+        #footer .alt dd {
+            margin: 0 0 2em 0;
+        }
+
+        #footer .icons {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 2em 0 0 0;
+        }
+
+        #footer .icons li {
+            padding: 0 1em 0 0;
+        }
+
+        #footer .icons a {
+            display: inline-block;
+            width: 2.5em;
+            height: 2.5em;
+            line-height: 2.5em;
+            text-align: center;
+            border-radius: 100%;
+            border: solid 2px rgba(99, 99, 99, 0.125);
+            color: #636363;
+            border-bottom: 0;
+        }
+
+        #footer .icons a:hover {
+            border-color: #935d8c;
+            color: #935d8c;
+        }
+
+        /* Mobile */
+        @media screen and (max-width: 980px) {
+            #wrapper {
+                width: calc(100% - 2em);
+            }
+
+            #header {
+                padding: 6em 0 0.25em 0;
+            }
+
+            #main > .main {
+                padding: 3em 2em 1em 2em;
+            }
+
+            #main > .main .spotlight {
+                flex-direction: column;
+            }
+
+            #main > .main .spotlight .content {
+                padding-right: 0;
+                margin-bottom: 2em;
+            }
+
+            #main > .main .spotlight .image {
+                width: 100%;
+            }
+
+            .features li {
+                width: calc(50% - 2em);
+            }
+
+            .statistics {
+                flex-wrap: wrap;
+            }
+
+            .statistics li {
+                flex-basis: 50%;
+            }
+
+            #nav {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .features li {
+                width: calc(100% - 2em);
+            }
+
+            .statistics li {
+                flex-basis: 100%;
+            }
+
+            #header h1 {
+                font-size: 2em;
+            }
+
+            #main > .main {
+                padding: 2em 1.5em 0.5em 1.5em;
+            }
+
+            #footer {
+                padding: 3em 1.5em 1em 1.5em;
+            }
+        }
+    </style>
 </head>
-
 <body class="is-preload">
-	<div id="wrapper">
-		<!-- Header -->
-		<header id="header" class="alt">
-			<span class="logo">
-				<img src="images/male-programmer.svg" alt="logo" style="width: 100px; height: 100px;" />
-			</span>
-			<h1 class="uppercase custom-weight serif">Opeyemi Olayiwola</h1>
-			<p class="serif">Data Scientist skilled in Python and Machine Learning</p>
-		</header>
+    <nav id="nav">
+        <ul>
+            <li><a href="#intro" class="active">Profile</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">Experience</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+    </nav>
 
-		<!-- Nav -->
-		<nav id="nav">
-			<ul>
-				<li><a href="#intro" class="active bold-weight">Profile</a></li>
-				<li><a href="#first" class="bold-weight">Projects</a></li>
-				<li><a href="#second" class="bold-weight">Experience</a></li>
-				<li><a href="#cta" class="bold-weight">Certifications</a></li>
-			</ul>
-		</nav>
+    <div id="wrapper">
+        <header id="header" class="alt">
+            <span class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="#935d8c"/>
+                    <path d="M30,40 L45,25 L60,40 L50,35 L40,45 L30,40 M50,60 L35,75 L50,65 L65,75 L50,60 M70,50 L60,40 L75,50 L60,60 L70,50" stroke="#fff" stroke-width="2" fill="none"/>
+                </svg>
+            </span>
+            <h1>Emmanuel Ani</h1>
+            <p>Data Scientist skilled in Python and Machine Learning</p>
+        </header>
 
-		<!-- Main -->
-		<div id="main">
-			<!-- Introduction -->
-			<section id="intro" class="main">
-				<div class="spotlight">
-					<div class="content">
-						<header class="major">
-							<h2 class="custom-weight serif">About Me</h2>
-						</header>
-						<div class="about-content serif light-weight">
-							<p>
-								I am a data analyst and data scientist with over two years of hands-on experience delivering impactful,
-								data-driven solutions. I excel at collaborating in team environments, adapting quickly to new technologies,
-								and transforming raw data into actionable insights.
-							</p>
+        <div id="main">
+            <section id="intro" class="main">
+                <div class="spotlight">
+                    <div class="content">
+                        <header class="major">
+                            <h2>About Me</h2>
+                        </header>
+                        <p>With over three years of hands-on data analysis and data science expertise, I've worked on and led successful projects through strong teamwork and technical proficiency. Known for mastering new tools swiftly, I'm committed to enhancing data-driven initiatives continuously.</p>
+                        <ul class="actions">
+                            <li><a href="about.html" class="button">Learn More</a></li>
+                        </ul>
+                    </div>
+                    <span class="image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23935d8c' width='400' height='400'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ffffff' opacity='0.2'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3EEA%3C/text%3E%3C/svg%3E" alt="Emmanuel Ani">
+                    </span>
+                </div>
+            </section>
 
-							<p>
-								My experience includes designing a Power BI analytics dashboard that improved data-driven decision-making
-								efficiency by 40%. I also helped organize a data analysis bootcamp, contributing to a 30% increase in participant
-								satisfaction, and worked with my team to create engaging social media content that boosted audience interaction
-								by 20%.
-							</p>
+            <section id="first" class="main special">
+                <header class="major">
+                    <h2>Projects</h2>
+                </header>
+                <ul class="features">
+                    <li>
+                        <span class="image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23efa8b0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3EYOLOv8%3C/text%3E%3C/svg%3E" alt="">
+                        </span>
+                        <h3><a href="https://github.com/emmanuelani/YOLO_visual_search" target="_blank">Visual Search Feature using YOLOv8</a></h3>
+                        <p>Pretrained YOLOv8 model on e-commerce dataset for object detection to be integrated as a visual search feature.</p>
+                    </li>
+                    <li>
+                        <span class="image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23c79cc8' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3ESpaceX%3C/text%3E%3C/svg%3E" alt="">
+                        </span>
+                        <h3><a href="https://github.com/emmanuelani/ibm_ds_capstone" target="_blank">Predictive Analysis</a></h3>
+                        <p>EDA on space rocket data using SQL and Folium. Built predictive model with 87.7% accuracy using Decision Tree.</p>
+                    </li>
+                    <li>
+                        <span class="image">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23a89cc8' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3ECyclistic%3C/text%3E%3C/svg%3E" alt="">
+                        </span>
+                        <h3><a href="https://www.kaggle.com/code/emmanuelani/cyclistic-bike-share-case-study" target="_blank">Cyclistic Bike Sharing</a></h3>
+                        <p>Analysis of bike-sharing data to inform targeted advertising strategies for converting casual users to members.</p>
+                    </li>
+                </ul>
+                <footer class="major">
+                    <ul class="actions special">
+                        <li><a href="projects.html" class="button primary">View All Projects</a></li>
+                    </ul>
+                </footer>
+            </section>
 
-							<p>
-								I have consistently earned recognition for high-quality work. After a competitive internship at KEN-X EDU,
-								I was retained as a full-time Data Analyst. As a Data Science Instructor at CareerEx, I developed learning
-								materials that increased student engagement by 90% and improved learning outcomes by 80%.
-							</p>
+            <section id="second" class="main">
+                <header class="major">
+                    <h2>Experience & Achievements</h2>
+                </header>
+                <ul class="statistics">
+                    <li class="style1">
+                        <strong>3+</strong> Years Experience
+                    </li>
+                    <li class="style2">
+                        <strong>5</strong> Major Projects
+                    </li>
+                    <li class="style3">
+                        <strong>4</strong> Professional Roles
+                    </li>
+                    <li class="style4">
+                        <strong>4</strong> Certifications
+                    </li>
+                    <li class="style5">
+                        <strong>90%</strong> Student Engagement
+                    </li>
+                </ul>
+                <p style="margin-top: 2em;">Led successful data science projects, developed AI models for HR applications, and mentored students with proven results in engagement and learning outcomes.</p>
+                <footer class="major">
+                    <ul class="actions special">
+                        <li><a href="about.html" class="button">View Full Experience</a></li>
+                    </ul>
+                </footer>
+            </section>
+        </div>
 
-							<p>
-								At Novotern, I led the FlatShare data project, enhancing project efficiency by 40% and contributing to a 90%
-								satisfaction rate. Across these roles, I have strengthened my skills in Python, R, SQL, Power BI, Excel,
-								and various visualization tools—positioning me as a valuable contributor to any data-driven organization.
-							</p>
-						</div>
-					</div>
-					<span class="image"><img src="images/headshot.jpg" alt="Opeyemi Olayiwola" /></span>
-				</div>
-			</section>
+        <footer id="footer">
+            <section>
+                <h2>Contact Details</h2>
+                <dl class="alt">
+                    <dt>Address</dt>
+                    <dd>Lagos, Nigeria</dd>
+                    <dt>Phone</dt>
+                    <dd>+234 9072004438</dd>
+                    <dt>Email</dt>
+                    <dd><a href="mailto:emmanuelani234@gmail.com">emmanuelani234@gmail.com</a></dd>
+                </dl>
+                <ul class="icons">
+                    <li><a href="https://x.com/emmanuelani_" target="_blank" class="icon" title="Twitter">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+                        </svg>
+                    </a></li>
+                    <li><a href="https://www.github.com/emmanuelani" target="_blank" class="icon" title="GitHub">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a></li>
+                    <li><a href="https://www.linkedin.com/in/emmanuel-ani-b2b680202" target="_blank" class="icon" title="LinkedIn">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                    </a></li>
+                </ul>
+            </section>
+        </footer>
+    </div>
 
-			<!-- Projects Section -->
-			<section id="first" class="main special">
-				<header class="major">
-					<h2 class="custom-weight serif">Projects</h2>
-					<p class="serif light-weight">Showcasing my hands-on experience with machine learning, data analysis, and visualization</p>
-				</header>
-				<ul class="features">
-					<li class="project-card">
-						<span class="image">
-							<img src="images/e-commerce image.jpg" alt="E-commerce Visual Search" class="project-image" />
-						</span>
-						<a href="https://github.com/emmanuelani/YOLO_visual_search" target="_blank">
-							<h3 class="custom-weight serif">Visual Search Feature using YOLOv8</h3>
-						</a>
-						<p class="serif light-weight">
-							Pretrained a YOLOv8 model on an e-commerce dataset for object detection to be integrated as a search feature. 
-							The model enables users to search for products using image inputs, detecting various e-commerce items from uploaded images.
-						</p>
-					</li>
+    <script>
+        // Smooth scrolling for nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-					<li class="project-card">
-						<span class="image">
-							<img src="images/falcon 9.jpg" alt="SpaceX Predictive Analysis" class="project-image" />
-						</span>
-						<a href="https://github.com/emmanuelani/ibm_ds_capstone" target="_blank">
-							<h3 class="custom-weight serif">SpaceX Predictive Analysis</h3>
-						</a>
-						<p class="serif light-weight">
-							Conducted Exploratory Data Analysis on space rocket company data using SQL and Folium visualization. 
-							Developed a predictive model using Decision Tree Classifier, achieving an accuracy score of 87.7%.
-						</p>
-					</li>
-
-					<li class="project-card">
-						<span class="image">
-							<img src="images/bike-sharing.jpg" alt="Cyclistic Bike Share" class="project-image" />
-						</span>
-						<a href="https://www.kaggle.com/code/emmanuelani/cyclistic-bike-share-case-study" target="_blank">
-							<h3 class="custom-weight serif">Cyclistic Bike Sharing Analysis</h3>
-						</a>
-						<p class="serif light-weight">
-							Analyzed usage patterns between members and casual users for a bike-sharing company. 
-							Provided insights to inform targeted advertising strategies for converting casual users into members.
-						</p>
-					</li>
-
-					<li class="project-card">
-						<span class="image">
-							<img src="images/hotel.jpg" alt="Hotel Analytics Dashboard" class="project-image" />
-						</span>
-						<a href="https://public.tableau.com/app/profile/emmanuel4173/viz/AtliqGrands/AtliqGrands" target="_blank">
-							<h3 class="custom-weight serif">Atliqs Grand Hospitality Analytics</h3>
-						</a>
-						<p class="serif light-weight">
-							Created interactive Tableau visualizations analyzing Atliqs Grand Hospitality's performance across India. 
-							Enabled data-driven decision-making to boost profits in a competitive market.
-						</p>
-					</li>
-
-					<li class="project-card">
-						<span class="image">
-							<img src="images/IT_skill_trend.jpg" alt="IT Skills Trend" class="project-image" />
-						</span>
-						<h3 class="custom-weight serif">IT Skills Trend Analysis</h3>
-						<p class="serif light-weight">
-							Analyzed Stack Overflow survey data to visualize trending and current IT skills in the industry. 
-							Identified emerging technologies and in-demand competencies for data professionals.
-						</p>
-					</li>
-				</ul>
-			</section>
-
-			<!-- Work Experience Section -->
-			<section id="second" class="main special">
-				<header class="major">
-					<h2 class="custom-weight serif">Work Experience</h2>
-					<p class="serif light-weight">Building data-driven solutions across multiple industries</p>
-				</header>
-				<ul class="clean-list">
-					<li>
-						<h3 class="experience-title custom-weight serif">Data Scientist - BoxIn AI</h3>
-						<p class="experience-desc serif light-weight">
-							Develop and maintain fine-tuned AI models tailored to HR applications while collaborating with software engineers and
-							product teams to integrate these models into the TalentMind platform. Refine the company's model API and
-							propose new features to enhance platform functionality.
-						</p>
-					</li>
-
-					<li>
-						<h3 class="experience-title custom-weight serif">Data Science Instructor - CareerEx</h3>
-						<p class="experience-desc serif light-weight">
-							Developed data science curriculums featuring practical Python exercises, resulting in a 90% increase in student
-							engagement. Delivered dynamic lectures and personalized mentorship, facilitating an 80% boost in student learning
-							outcomes and contributing to a 75% rise in students' skills proficiency.
-						</p>
-					</li>
-
-					<li>
-						<h3 class="experience-title custom-weight serif">Data Science Intern - Novotern</h3>
-						<p class="experience-desc serif light-weight">
-							Led the FlatShare project team, fostering seamless collaboration between product managers, designers, analysts, and
-							developers, resulting in a 40% increase in project efficiency. Through effective stakeholder communication and milestone
-							achievement, ensured project alignment with company goals, maintaining a 90% satisfaction rate.
-						</p>
-					</li>
-
-					<li>
-						<h3 class="experience-title custom-weight serif">Data Analyst - KEN-X EDU</h3>
-						<p class="experience-desc serif light-weight">
-							Retained as a full-time Data Analyst after a six-month internship. Designed a Power BI dashboard that improved 
-							data-driven decision-making efficiency by 40%. Served as key planner for a data analysis boot camp, contributing to 
-							a 30% increase in participant satisfaction. Created engaging data analysis content for social media, boosting viewer 
-							interactions by 20%.
-						</p>
-					</li>
-				</ul>
-			</section>
-
-			<!-- Certifications Section -->
-			<section id="cta" class="main special">
-				<header class="major">
-					<h2 class="custom-weight serif">Certifications</h2>
-					<p class="serif light-weight">Continuous learning and professional development</p>
-				</header>
-				<ul class="clean-list serif light-weight">
-					<li>
-						<strong>Machine Learning Specialization</strong> - DeepLearning.AI (Coursera)
-					</li>
-					<li>
-						<strong>Deep Learning Specialization</strong> - DeepLearning.AI (Coursera)
-					</li>
-					<li>
-						<strong>IBM Data Science Professional Certificate</strong> - IBM (Coursera)
-					</li>
-					<li>
-						<strong>Google Data Analytics Professional Certificate</strong> - Google (Coursera)
-					</li>
-				</ul>
-			</section>
-		</div>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<section>
-				<h2 class="custom-weight serif">Contact Details</h2>
-				<dl class="alt contact-info serif light-weight">
-					<dt>Address</dt>
-					<dd>Lagos, Nigeria</dd>
-					<dt>Phone</dt>
-					<dd>+234 8121154346</dd>
-					<dt>Email</dt>
-					<dd><a href="mailto:opeyemiolayiwola170@gmail.com">opeyemiolayiwola170@gmail.com</a></dd>
-				</dl>
-				<ul class="icons">
-					<li>
-						<a href="https://x.com/Olayiwola170?t=RByR2TPUGD_UcebTIZVRgA&s=09" target="_blank" 
-						   class="icon brands fa-twitter alt" aria-label="Twitter">
-							<span class="label">Twitter</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://www.github.com/opeyemi170" target="_blank" 
-						   class="icon brands fa-github alt" aria-label="GitHub">
-							<span class="label">GitHub</span>
-						</a>
-					</li>
-					<li>
-						<a href="https://www.linkedin.com/in/opeyemi-olayiwola-3a2483aa/" target="_blank" 
-						   class="icon brands fa-linkedin alt" aria-label="LinkedIn">
-							<span class="label">LinkedIn</span>
-						</a>
-					</li>
-				</ul>
-			</section>
-			<p class="copyright">&copy; 2024 Opeyemi Olayiwola. Template: <a href="https://html5up.net">HTML5 UP</a></p>
-		</footer>
-	</div>
-
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+        // Active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id], header[id]');
+            const navLinks = document.querySelectorAll('#nav a');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

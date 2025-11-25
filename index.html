@@ -1,597 +1,279 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opeyemi Olayiwola- Data Scientist Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans Pro', Arial, sans-serif;
-            background: #935d8c;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 17pt;
-            font-weight: 300;
-            line-height: 1.65;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
-            transition: border-bottom-color 0.2s ease-in-out, color 0.2s ease-in-out;
-        }
-
-        a:hover {
-            border-bottom-color: transparent;
-            color: #ffffff;
-        }
-
-        h1, h2, h3, h4 {
-            color: #ffffff;
-            font-weight: 600;
-            line-height: 1.5;
-            margin: 0 0 1em 0;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            line-height: 1.2;
-            font-weight: 900;
-        }
-
-        h2 {
-            font-size: 1.75em;
-            font-weight: 900;
-        }
-
-        /* Navigation */
-        #nav {
-            position: fixed;
-            top: 1em;
-            left: 1em;
-            z-index: 10000;
-            background: rgba(255, 255, 255, 0.175);
-            border-radius: 0.35em;
-            padding: 0.5em 0.75em;
-        }
-
-        #nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        #nav li {
-            display: inline-block;
-            margin: 0;
-            padding: 0;
-        }
-
-        #nav a {
-            display: block;
-            color: #ffffff;
-            border: 0;
-            text-decoration: none;
-            font-size: 0.8em;
-            font-weight: 600;
-            border-radius: 0.35em;
-            padding: 0.5em 1em;
-            transition: background-color 0.2s ease-in-out;
-        }
-
-        #nav a.active,
-        #nav a:hover {
-            background-color: rgba(255, 255, 255, 0.35);
-        }
-
-        /* Wrapper */
-        #wrapper {
-            width: 64em;
-            max-width: calc(100% - 4em);
-            margin: 0 auto;
-        }
-
-        /* Header */
-        #header {
-            padding: 8em 0 0.25em 0;
-            text-align: center;
-        }
-
-        #header .logo {
-            width: 5.5em;
-            height: 5.5em;
-            line-height: 5.5em;
-            border: solid 2px rgba(255, 255, 255, 0.125);
-            border-radius: 100%;
-            display: inline-block;
-            margin: 0 0 2em 0;
-            padding: 0;
-            position: relative;
-        }
-
-        #header .logo svg,
-        #header .logo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-        }
-
-        #header h1 {
-            font-size: 3.25em;
-            margin: 0 0 0.55em 0;
-        }
-
-        #header p {
-            font-size: 1.35em;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Main */
-        #main {
-            background-color: #ffffff;
-            color: #636363;
-            border-radius: 0.25em;
-        }
-
-        #main > .main {
-            padding: 5em 5em 3em 5em;
-            border-top: solid 2px #eeeeee;
-        }
-
-        #main > .main:first-child {
-            border-top: 0;
-        }
-
-        #main > .main .spotlight {
-            display: flex;
-            align-items: center;
-            margin: 0 0 2em 0;
-        }
-
-        #main > .main .spotlight .content {
-            flex: 1 1 0%;
-            padding-right: 3em;
-        }
-
-        #main > .main .spotlight .image {
-            display: inline-block;
-            width: 28em;
-        }
-
-        #main > .main .spotlight .image img {
-            display: block;
-            width: 100%;
-            border-radius: 0.25em;
-        }
-
-        #main > .main.special {
-            text-align: center;
-        }
-
-        #main > .main h2 {
-            color: #636363;
-        }
-
-        #main > .main p {
-            margin: 0 0 2em 0;
-        }
-
-        /* Features */
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 3em 0 0 0;
-            width: calc(100% + 4em);
-            margin-left: -2em;
-        }
-
-        .features li {
-            flex-shrink: 1;
-            flex-grow: 0;
-            width: calc(33.33333% - 2em);
-            margin-left: 2em;
-            margin-top: 3em;
-            padding: 0;
-            text-align: center;
-            list-style: none;
-        }
-
-        .features li .image {
-            display: inline-block;
-            width: 100%;
-            margin-bottom: 1.5em;
-        }
-
-        .features li .image img {
-            width: 100%;
-            border-radius: 0.25em;
-        }
-
-        .features li h3 {
-            font-size: 1em;
-            font-weight: 600;
-            margin-bottom: 0.5em;
-        }
-
-        .features li h3 a {
-            color: #636363;
-            border: 0;
-        }
-
-        .features li h3 a:hover {
-            color: #935d8c;
-        }
-
-        /* Statistics */
-        .statistics {
-            display: flex;
-            width: 100%;
-            margin: 3em 0 0 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .statistics li {
-            flex: 1;
-            padding: 1.5em;
-            color: #ffffff;
-            text-align: center;
-        }
-
-        .statistics li.style1 { background-color: #efa8b0; }
-        .statistics li.style2 { background-color: #c79cc8; }
-        .statistics li.style3 { background-color: #a89cc8; }
-        .statistics li.style4 { background-color: #9bb2e1; }
-        .statistics li.style5 { background-color: #8cc9f0; }
-
-        .statistics li strong {
-            display: block;
-            font-size: 2em;
-            font-weight: 900;
-            line-height: 1.3;
-        }
-
-        /* Button */
-        .button {
-            appearance: none;
-            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-            background-color: transparent;
-            border-radius: 0.35em;
-            border: 0;
-            box-shadow: inset 0 0 0 2px #636363;
-            color: #636363 !important;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 0.8em;
-            font-weight: 600;
-            height: 3.5em;
-            letter-spacing: 0.075em;
-            line-height: 3.5em;
-            padding: 0 2.25em;
-            text-align: center;
-            text-decoration: none;
-            text-transform: uppercase;
-            white-space: nowrap;
-            border-bottom: 0;
-        }
-
-        .button:hover {
-            background-color: rgba(99, 99, 99, 0.075);
-        }
-
-        .button.primary {
-            background-color: #935d8c;
-            box-shadow: none;
-            color: #ffffff !important;
-        }
-
-        .button.primary:hover {
-            background-color: #a06b97;
-        }
-
-        /* Footer */
-        #footer {
-            padding: 5em 5em 3em 5em;
-            background-color: #f8f8f8;
-            color: #636363;
-            border-radius: 0.25em;
-            margin-top: 2em;
-        }
-
-        #footer h2 {
-            color: #636363;
-            margin-bottom: 2em;
-            text-align: center;
-        }
-
-        #footer .alt {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        #footer .alt dt {
-            display: block;
-            font-weight: 600;
-            margin: 0 0 0.5em 0;
-        }
-
-        #footer .alt dd {
-            margin: 0 0 2em 0;
-        }
-
-        #footer .icons {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 2em 0 0 0;
-        }
-
-        #footer .icons li {
-            padding: 0 1em 0 0;
-        }
-
-        #footer .icons a {
-            display: inline-block;
-            width: 2.5em;
-            height: 2.5em;
-            line-height: 2.5em;
-            text-align: center;
-            border-radius: 100%;
-            border: solid 2px rgba(99, 99, 99, 0.125);
-            color: #636363;
-            border-bottom: 0;
-        }
-
-        #footer .icons a:hover {
-            border-color: #935d8c;
-            color: #935d8c;
-        }
-
-        /* Mobile */
-        @media screen and (max-width: 980px) {
-            #wrapper {
-                width: calc(100% - 2em);
-            }
-
-            #header {
-                padding: 6em 0 0.25em 0;
-            }
-
-            #main > .main {
-                padding: 3em 2em 1em 2em;
-            }
-
-            #main > .main .spotlight {
-                flex-direction: column;
-            }
-
-            #main > .main .spotlight .content {
-                padding-right: 0;
-                margin-bottom: 2em;
-            }
-
-            #main > .main .spotlight .image {
-                width: 100%;
-            }
-
-            .features li {
-                width: calc(50% - 2em);
-            }
-
-            .statistics {
-                flex-wrap: wrap;
-            }
-
-            .statistics li {
-                flex-basis: 50%;
-            }
-
-            #nav {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .features li {
-                width: calc(100% - 2em);
-            }
-
-            .statistics li {
-                flex-basis: 100%;
-            }
-
-            #header h1 {
-                font-size: 2em;
-            }
-
-            #main > .main {
-                padding: 2em 1.5em 0.5em 1.5em;
-            }
-
-            #footer {
-                padding: 3em 1.5em 1em 1.5em;
-            }
-        }
-    </style>
-</head>
-<body class="is-preload">
-    <nav id="nav">
-        <ul>
-            <li><a href="#intro" class="active">Profile</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">Experience</a></li>
-            <li><a href="#footer">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div id="wrapper">
-        <header id="header" class="alt">
-            <span class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="#935d8c"/>
-                    <path d="M30,40 L45,25 L60,40 L50,35 L40,45 L30,40 M50,60 L35,75 L50,65 L65,75 L50,60 M70,50 L60,40 L75,50 L60,60 L70,50" stroke="#fff" stroke-width="2" fill="none"/>
-                </svg>
-            </span>
-            <h1>Emmanuel Ani</h1>
-            <p>Data Scientist skilled in Python and Machine Learning</p>
-        </header>
-
-        <div id="main">
-            <section id="intro" class="main">
-                <div class="spotlight">
-                    <div class="content">
-                        <header class="major">
-                            <h2>About Me</h2>
-                        </header>
-                        <p>With over three years of hands-on data analysis and data science expertise, I've worked on and led successful projects through strong teamwork and technical proficiency. Known for mastering new tools swiftly, I'm committed to enhancing data-driven initiatives continuously.</p>
-                        <ul class="actions">
-                            <li><a href="about.html" class="button">Learn More</a></li>
-                        </ul>
-                    </div>
-                    <span class="image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23935d8c' width='400' height='400'/%3E%3Ccircle cx='200' cy='200' r='150' fill='%23ffffff' opacity='0.2'/%3E%3Ctext x='50%25' y='50%25' font-size='120' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3EEA%3C/text%3E%3C/svg%3E" alt="Emmanuel Ani">
-                    </span>
-                </div>
-            </section>
-
-            <section id="first" class="main special">
-                <header class="major">
-                    <h2>Projects</h2>
-                </header>
-                <ul class="features">
-                    <li>
-                        <span class="image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23efa8b0' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3EYOLOv8%3C/text%3E%3C/svg%3E" alt="">
-                        </span>
-                        <h3><a href="https://github.com/emmanuelani/YOLO_visual_search" target="_blank">Visual Search Feature using YOLOv8</a></h3>
-                        <p>Pretrained YOLOv8 model on e-commerce dataset for object detection to be integrated as a visual search feature.</p>
-                    </li>
-                    <li>
-                        <span class="image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23c79cc8' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3ESpaceX%3C/text%3E%3C/svg%3E" alt="">
-                        </span>
-                        <h3><a href="https://github.com/emmanuelani/ibm_ds_capstone" target="_blank">Predictive Analysis</a></h3>
-                        <p>EDA on space rocket data using SQL and Folium. Built predictive model with 87.7% accuracy using Decision Tree.</p>
-                    </li>
-                    <li>
-                        <span class="image">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23a89cc8' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' font-size='32' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle' font-weight='bold'%3ECyclistic%3C/text%3E%3C/svg%3E" alt="">
-                        </span>
-                        <h3><a href="https://www.kaggle.com/code/emmanuelani/cyclistic-bike-share-case-study" target="_blank">Cyclistic Bike Sharing</a></h3>
-                        <p>Analysis of bike-sharing data to inform targeted advertising strategies for converting casual users to members.</p>
-                    </li>
-                </ul>
-                <footer class="major">
-                    <ul class="actions special">
-                        <li><a href="projects.html" class="button primary">View All Projects</a></li>
-                    </ul>
-                </footer>
-            </section>
-
-            <section id="second" class="main">
-                <header class="major">
-                    <h2>Experience & Achievements</h2>
-                </header>
-                <ul class="statistics">
-                    <li class="style1">
-                        <strong>3+</strong> Years Experience
-                    </li>
-                    <li class="style2">
-                        <strong>5</strong> Major Projects
-                    </li>
-                    <li class="style3">
-                        <strong>4</strong> Professional Roles
-                    </li>
-                    <li class="style4">
-                        <strong>4</strong> Certifications
-                    </li>
-                    <li class="style5">
-                        <strong>90%</strong> Student Engagement
-                    </li>
-                </ul>
-                <p style="margin-top: 2em;">Led successful data science projects, developed AI models for HR applications, and mentored students with proven results in engagement and learning outcomes.</p>
-                <footer class="major">
-                    <ul class="actions special">
-                        <li><a href="about.html" class="button">View Full Experience</a></li>
-                    </ul>
-                </footer>
-            </section>
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code, Briefcase, User, MessageSquare } from 'lucide-react';
+
+export default function Portfolio() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const projects = [
+    {
+      title: "Predictive Analytics Dashboard",
+      description: "Built a comprehensive dashboard for real-time data analysis and predictive modeling using machine learning algorithms.",
+      tech: ["Python", "Pandas", "Scikit-learn", "Tableau"],
+      link: "#"
+    },
+    {
+      title: "Data Pipeline Architecture",
+      description: "Designed and implemented scalable ETL pipelines for processing large datasets with automated data quality checks.",
+      tech: ["Apache Spark", "AWS", "SQL", "Airflow"],
+      link: "#"
+    },
+    {
+      title: "Customer Segmentation Model",
+      description: "Developed machine learning models for customer segmentation and behavioral analysis to drive marketing strategies.",
+      tech: ["Python", "TensorFlow", "Clustering", "SQL"],
+      link: "#"
+    },
+    {
+      title: "Real-time Data Streaming",
+      description: "Implemented real-time data streaming infrastructure for processing high-volume event data and generating insights.",
+      tech: ["Kafka", "Spark Streaming", "MongoDB", "Docker"],
+      link: "#"
+    }
+  ];
+
+  const skills = [
+    { category: "Data Science", items: ["Python", "R", "Machine Learning", "Deep Learning", "Statistics"] },
+    { category: "Data Engineering", items: ["Apache Spark", "Airflow", "ETL Pipelines", "Kafka", "SQL"] },
+    { category: "Cloud & Infrastructure", items: ["AWS", "Azure", "Docker", "Kubernetes", "Terraform"] },
+    { category: "Visualization", items: ["Tableau", "Power BI", "Matplotlib", "Plotly", "D3.js"] }
+  ];
+
+  const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
+    setIsMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white">
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Portfolio
+            </div>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex space-x-8">
+              {['home', 'about', 'projects', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`capitalize hover:text-purple-400 transition-colors ${activeSection === section ? 'text-purple-400' : ''}`}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
 
-        <footer id="footer">
-            <section>
-                <h2>Contact Details</h2>
-                <dl class="alt">
-                    <dt>Address</dt>
-                    <dd>Lagos, Nigeria</dd>
-                    <dt>Phone</dt>
-                    <dd>+234 9072004438</dd>
-                    <dt>Email</dt>
-                    <dd><a href="mailto:emmanuelani234@gmail.com">emmanuelani234@gmail.com</a></dd>
-                </dl>
-                <ul class="icons">
-                    <li><a href="https://x.com/emmanuelani_" target="_blank" class="icon" title="Twitter">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
-                        </svg>
-                    </a></li>
-                    <li><a href="https://www.github.com/emmanuelani" target="_blank" class="icon" title="GitHub">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                        </svg>
-                    </a></li>
-                    <li><a href="https://www.linkedin.com/in/emmanuel-ani-b2b680202" target="_blank" class="icon" title="LinkedIn">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-                        </svg>
-                    </a></li>
-                </ul>
-            </section>
-        </footer>
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-gray-900/95 backdrop-blur-sm">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {['home', 'about', 'projects', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className="block w-full text-left px-3 py-2 capitalize hover:bg-purple-900/50 rounded"
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-6 animate-fadeIn">
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 p-1">
+              <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
+                <User size={48} className="text-purple-400" />
+              </div>
+            </div>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+            Hi, I'm Opeyemi Olayiwola
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8">
+            Data Scientist & Data Infrastructure Specialist
+          </p>
+          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+            I transform complex data into actionable insights and build robust data infrastructure solutions. 
+            Based in Lagos, Nigeria, I'm passionate about leveraging data science to solve real-world problems.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+            >
+              View My Work
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="px-8 py-3 border-2 border-purple-400 rounded-full font-semibold hover:bg-purple-400/10 transition-all"
+            >
+              Get In Touch
+            </button>
+          </div>
+          <div className="flex gap-6 justify-center mt-12">
+            <a href="https://github.com/opeyemi17o" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
+              <Github size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/opeyemi-olayiwola-3a2483aa" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
+              <Linkedin size={24} />
+            </a>
+            <a href="mailto:opeyemiolayiwola170@gmail.com" className="hover:text-purple-400 transition-colors">
+              <Mail size={24} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            About Me
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-lg text-gray-300 mb-6">
+                I'm a passionate data scientist specializing in data infrastructure with expertise in building scalable 
+                data pipelines and deriving actionable insights from complex datasets.
+              </p>
+              <p className="text-lg text-gray-300 mb-6">
+                Based in Lagos, Nigeria, I work at the intersection of data science and engineering, creating robust 
+                solutions that drive business decisions. I'm committed to leveraging data to solve challenging problems 
+                and deliver measurable impact.
+              </p>
+              <div className="flex gap-4 mt-8">
+                <Briefcase className="text-purple-400 flex-shrink-0" />
+                <div>
+                  <h3 className="font-semibold mb-2">Contact</h3>
+                  <p className="text-gray-400">Lagos, Nigeria</p>
+                  <p className="text-gray-400">+234 812 115 4346</p>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {skills.map((skillGroup, idx) => (
+                <div key={idx} className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg hover:bg-gray-800/70 transition-all">
+                  <h3 className="font-semibold mb-3 text-purple-400">{skillGroup.category}</h3>
+                  <ul className="space-y-2 text-sm text-gray-300">
+                    {skillGroup.items.map((skill, i) => (
+                      <li key={i}>{skill}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Featured Projects
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.map((project, idx) => (
+              <div key={idx} className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 hover:bg-gray-800/70 transition-all hover:transform hover:scale-105">
+                <div className="flex items-start justify-between mb-4">
+                  <Code className="text-purple-400" size={32} />
+                  <a href={project.link} className="text-gray-400 hover:text-purple-400 transition-colors">
+                    <ExternalLink size={20} />
+                  </a>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                <p className="text-gray-400 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, i) => (
+                    <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="min-h-screen flex items-center justify-center px-4 py-20">
+        <div className="max-w-2xl mx-auto w-full text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Let's Work Together
+          </h2>
+          <p className="text-lg text-gray-300 mb-12">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          </p>
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-8">
+            <div className="space-y-6">
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-purple-400 focus:outline-none transition-colors"
+              />
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-purple-400 focus:outline-none transition-colors"
+              />
+              <textarea
+                placeholder="Your Message"
+                rows="5"
+                className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg focus:border-purple-400 focus:outline-none transition-colors resize-none"
+              ></textarea>
+              <button className="w-full px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all">
+                Send Message
+              </button>
+            </div>
+          </div>
+          <div className="flex gap-6 justify-center mt-12">
+            <a href="https://github.com/opeyemi17o" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
+              <Github size={28} />
+            </a>
+            <a href="https://www.linkedin.com/in/opeyemi-olayiwola-3a2483aa" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors">
+              <Linkedin size={28} />
+            </a>
+            <a href="mailto:opeyemiolayiwola170@gmail.com" className="hover:text-purple-400 transition-colors">
+              <Mail size={28} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 text-center text-gray-400 border-t border-gray-800">
+        <p>&copy; 2024 Opeyemi Olayiwola. Built with React & Tailwind CSS</p>
+      </footer>
     </div>
-
-    <script>
-        // Smooth scrolling for nav
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Active nav on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id], header[id]');
-            const navLinks = document.querySelectorAll('#nav a');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                const sectionId = section.getAttribute('id');
-                
-                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + sectionId) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+  );
+}
